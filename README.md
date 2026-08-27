@@ -1,18 +1,17 @@
-# Parent Knowledge Model — [Client / Org Name]
+# Parent Knowledge Model — MNC Pvt Ltd
 
 This repository is the **Parent Knowledge Model (PKM)** for the Data & Analytics
-delivery engagement at **[Client / Org Name]** (placeholder used throughout this
-scaffold: `MNC Pvt Ltd`).
+delivery engagement at **MNC Pvt Ltd**.
 
 It is the single source of truth for enterprise-wide context — business,
 architecture, requirements, governance, and delivery — that engineering-discipline
 knowledge models (Platform Engineering, Data Engineering, Analytics Engineering,
 DevOps, AI/ML) link back to.
 
-This scaffold is intentionally **industry-agnostic and reusable**. Swap the
-example content for your actual engagement; keep the structure, ID scheme, and
-frontmatter schema as-is so every future engagement is consistent and machine
-readable by AI agents.
+The current model captures an on-premises data platform modernization scenario.
+The structure, ID scheme, and frontmatter schema remain reusable for future
+engagements; replace the example entities and client-specific content when
+starting a new engagement.
 
 ## Why this exists
 
@@ -38,6 +37,10 @@ versioned, linkable entities so that:
   /delivery         Workstreams, milestones, risks, assumptions, dependencies
 /schemas            Entity & frontmatter schema definitions
 /adr                Enterprise/solution-architecture-level decision records
+/meeting_summary    Meeting summaries and source notes
+/open-questions     Assessment outputs and questions for upcoming meetings
+/prompt-library     Reusable prompts for summaries, updates, and discovery
+/_pending-review    Staged content awaiting human review or approval
 entities.index.yaml Registry of every entity in this repo (and links to child repos)
 CHANGELOG.md        Human-readable log of what changed, release by release
 ```
@@ -46,6 +49,27 @@ Each domain folder contains:
 - `_template.md` — a blank, generic template. Copy this to start a new entry.
 - One or more populated example files showing the template in use for the
   `MNC Pvt Ltd` on-prem → cloud modernization scenario.
+
+The `open-questions/` folder contains working assessment outputs and is not an
+entity domain. Its files may reference entity ids, but they are not added to
+`entities.index.yaml` unless they are later converted into domain entities.
+
+## Prompt workflows
+
+The reusable prompts in `prompt-library/` support the current workflow:
+
+- `meeting-transcript-to-summary.md` — extracts and organizes meeting content,
+  tags each pointer to a core domain, and marks unknown owners or domains with
+  `[NEEDS HUMAN INPUT: ...]`.
+- `meeting-summary-to-domain-update.md` — classifies meeting content and
+  proposes new or updated entities behind an explicit human approval gate.
+- `current-state-discovery/08-current-state-assessment-and-question-prep.md`
+  — assesses current-state knowledge, identifies gaps, and creates an
+  `open-questions/` outcome file for the next meeting.
+
+Generated summaries and question lists must preserve source attribution. Do not
+guess owners, dates, domains, statuses, or decisions; use a specific
+`[NEEDS HUMAN INPUT: ...]` marker instead.
 
 ## Entity ID convention
 
@@ -105,9 +129,12 @@ what changed between versions without diffing every file.
 
 1. Duplicate this repo (or fork the scaffold) per client/engagement.
 2. Replace `MNC Pvt Ltd` throughout with the real client name.
-3. Delete or rewrite the example entities — keep the `_template.md` files.
+3. Delete or rewrite the example entities, meeting summaries, and open-question
+  outputs; keep the `_template.md` files and reusable prompts.
 4. Start with `engagement/` and `current-state/` — you can't write meaningful
    requirements or target-state until those are captured.
-5. Stand up the first engineering-discipline repo (e.g. Platform Engineering)
+5. Use the assessment prompt to identify gaps and create the first
+  `open-questions/` file before the next discovery session.
+6. Stand up the first engineering-discipline repo (e.g. Platform Engineering)
    once `current-state` and the first `target-state` decisions exist for it to
    link against.
