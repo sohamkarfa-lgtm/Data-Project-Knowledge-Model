@@ -1,4 +1,4 @@
-# Prompt 01 — Meeting Summary to Domain Update (Single-Pass, Approval-Gated)
+# Prompt 02 — Meeting Summary to Domain Update (Single-Pass, Approval-Gated)
 
 **Use when:** you have a meeting/workshop summary (or transcript) in hand and
 want one prompt that does the whole job — classify, decide new-vs-update,
