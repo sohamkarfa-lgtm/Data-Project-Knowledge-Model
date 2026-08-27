@@ -1,0 +1,58 @@
+# Generic frontmatter schema for every entity in the Knowledge Model.
+# This is documentation of the convention, not a machine-enforced schema yet —
+# enforcing it (e.g. with a pre-commit hook or JSON Schema validator) is a
+# reasonable Milestone 2+ addition once the format has stabilized.
+
+id:
+  description: Stable unique identifier. Format PARENT-<DOMAIN-CODE>-####. Never reused.
+  required: true
+  example: PARENT-REQ-0001
+
+domain:
+  description: One of the seven core domains (folder name).
+  required: true
+  allowed:
+    - engagement
+    - evidence
+    - requirements
+    - current-state
+    - governance
+    - target-state
+    - delivery
+
+type:
+  description: Entity subtype, specific to the domain (see each _template.md for allowed values).
+  required: true
+
+status:
+  description: Lifecycle state of this entity.
+  required: true
+  allowed: [draft, validated, superseded]
+
+owner:
+  description: Team or role accountable for this entity's accuracy.
+  required: true
+  example: enterprise-architecture
+
+relates_to:
+  description: List of other entity IDs this entity depends on, derives from, or impacts. Cross-domain and cross-repo references both use this field.
+  required: false
+  example: [PARENT-EVD-0002, PARENT-ENG-0001]
+
+superseded_by:
+  description: Set only when status is superseded. Points to the replacing entity ID.
+  required: false
+
+source:
+  description: Where this came from — workshop, interview, document, system. Keeps evidence traceable.
+  required: false
+  example: "Discovery Workshop 2026-08-12"
+
+created:
+  description: ISO date the entity was first captured.
+  required: true
+  example: "2026-08-12"
+
+tags:
+  description: Free-text labels for informal grouping/search before a formal taxonomy exists.
+  required: false

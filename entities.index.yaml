@@ -1,0 +1,120 @@
+# Registry of every entity in this repo.
+# Update this whenever an entity is added, its status changes, or it is
+# superseded. Child repos (e.g. knowledge-model-platform-engineering) keep
+# their own index; an agent or script can merge both to build the full graph.
+
+repo: knowledge-model-parent
+
+entities:
+  - id: PARENT-ENG-0001
+    title: "Modernize Data & Analytics Platform (business objective)"
+    domain: engagement
+    status: validated
+    path: domains/engagement/PARENT-ENG-0001.md
+
+  - id: PARENT-ENG-0002
+    title: "Stakeholder map"
+    domain: engagement
+    status: validated
+    path: domains/engagement/PARENT-ENG-0002.md
+
+  - id: PARENT-EVD-0001
+    title: "Current platform assessment"
+    domain: evidence
+    status: validated
+    path: domains/evidence/PARENT-EVD-0001.md
+
+  - id: PARENT-REQ-0001
+    title: "Independent storage/compute scaling"
+    domain: requirements
+    status: validated
+    path: domains/requirements/PARENT-REQ-0001.md
+
+  - id: PARENT-REQ-0002
+    title: "Faster use-case onboarding"
+    domain: requirements
+    status: draft
+    path: domains/requirements/PARENT-REQ-0002.md
+
+  - id: PARENT-REQ-0003
+    title: "Incremental coexistence during modernization"
+    domain: requirements
+    status: draft
+    path: domains/requirements/PARENT-REQ-0003.md
+
+  - id: PARENT-CS-0001
+    title: "On-prem data warehouse architecture (as-is)"
+    domain: current-state
+    status: validated
+    path: domains/current-state/PARENT-CS-0001.md
+
+  - id: PARENT-CS-0002
+    title: "Key-person dependency on three ETL pipelines"
+    domain: current-state
+    status: draft
+    path: domains/current-state/PARENT-CS-0002.md
+
+  - id: PARENT-CS-0003
+    title: "ETL logic not under version control"
+    domain: current-state
+    status: draft
+    path: domains/current-state/PARENT-CS-0003.md
+
+  - id: PARENT-CS-0004
+    title: "Duplicated business logic across data marts"
+    domain: current-state
+    status: draft
+    path: domains/current-state/PARENT-CS-0004.md
+
+  - id: PARENT-CS-0005
+    title: "Fragile sequential nightly batch chain"
+    domain: current-state
+    status: draft
+    path: domains/current-state/PARENT-CS-0005.md
+
+  - id: PARENT-CS-0006
+    title: "No data quality tooling or catalog"
+    domain: current-state
+    status: draft
+    path: domains/current-state/PARENT-CS-0006.md
+
+  - id: PARENT-CS-0007
+    title: "Recurring ETL licensing and hardware maintenance cost pressure"
+    domain: current-state
+    status: draft
+    path: domains/current-state/PARENT-CS-0007.md
+
+  - id: PARENT-GOV-0001
+    title: "Platform vs. data product ownership model (draft)"
+    domain: governance
+    status: draft
+    path: domains/governance/PARENT-GOV-0001.md
+
+  - id: PARENT-TS-0001
+    title: "Target cloud lakehouse architecture"
+    domain: target-state
+    status: draft
+    path: domains/target-state/PARENT-TS-0001.md
+
+  - id: PARENT-DEL-0001
+    title: "Milestone 1: platform landing zone + first use case"
+    domain: delivery
+    status: validated
+    path: domains/delivery/PARENT-DEL-0001.md
+
+  - id: PARENT-DEL-0002
+    title: "Risk: key-person dependency blocking future migration"
+    domain: delivery
+    status: validated
+    path: domains/delivery/PARENT-DEL-0002.md
+
+  - id: PARENT-ADR-0001
+    title: "Adopt cloud-first modernization strategy"
+    domain: adr
+    status: validated
+    path: adr/PARENT-ADR-0001.md
+
+child_repos: []
+  # Example once Platform Engineering repo exists:
+  # - name: knowledge-model-platform-engineering
+  #   index: ../knowledge-model-platform-engineering/entities.index.yaml

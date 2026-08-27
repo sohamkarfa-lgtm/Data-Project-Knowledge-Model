@@ -1,0 +1,19 @@
+Current State Discovery Workshop — MNC Pvt Ltd — 2026-08-27
+
+Architecture today: A single transactional database (~1,000 tables, ~15 years of organic growth, no clean data dictionary) feeds a traditional GUI-based ETL tool, which loads a traditional on-prem relational data warehouse. 
+Four stakeholder-specific data marts (Finance, Sales, Campaign, Customer Ops) sit on top.
+
+Key pain points raised:
+
+No version control on ETL logic — workflows live only inside the GUI tool's project files, coordinated informally over chat.
+Duplicated business logic across marts — different marts define metrics (e.g. "net revenue") independently, which caused a real Finance-vs-Sales reporting discrepancy last quarter that took two weeks to trace.
+Fragile nightly batch chain — ~5-6 hour sequential run, degrading from ~3 hours two years ago; a single job failure blocks everything downstream, with no automated retry, only email alerts.
+Key-person risk —  Only two people who understand the full pipeline; three complex transformations are undocumented.
+Scaling constraint — ETL and warehouse share fixed, co-located infrastructure; additional capacity requires hardware procurement (~10 weeks lead time last time it was done).
+Slow onboarding for new reporting needs — anything outside the four existing marts takes 6-8 weeks to deliver, with no self-service option for business users.
+No data quality tooling or catalog — only basic row-count reconciliation; lineage knowledge is tribal.
+Recurring cost pressure — annual ETL tool licensing plus warehouse hardware maintenance is a yearly budget conversation, not just a technical constraint.
+
+Hard constraint for any future transition: no big-bang cutover — the four marts are business-critical daily (Finance closes books off this data), so any modernization must run in parallel until each piece is proven.
+
+Next step: a follow-up session to explore target-state options.
