@@ -8,10 +8,9 @@
 MNC Pvt Ltd stated a strong direction toward Azure because of its Microsoft estate, existing Enterprise Agreement, Entra ID, Office 365, and Power BI usage. The analytics compute decision remains open between Microsoft Fabric and Azure Databricks; business familiarity, speed, and manageability favor guided managed tooling, while flexibility and an open lakehouse favor Databricks. Azure Data Lake Storage Gen2 was recommended as a compute-independent storage foundation, with Azure Data Factory as the default for batch and hourly ingestion. The first target-state use case should be Supply Chain inventory visibility, delivered in parallel with the existing mart within the current quarter. A shared semantic layer and Finance-visible cost tracking from week one were identified as hard requirements. The date needs confirmation because the transcript header says 2026-09-03 while the supplied meeting context and summary filename identify 2026-08-28.
 
 ## Needs human input
-- N01 - Meeting date - **Domain:** [NEEDS HUMAN INPUT: domain classification]  **Owner:** [NEEDS HUMAN INPUT: owner]  **Reason:** The supplied meeting context and transcript filename indicate 2026-08-28, but the transcript header states 2026-09-03.
-- N02 - Final analytics compute platform - **Domain:** target-state  **Owner:** [NEEDS HUMAN INPUT: owner]  **Reason:** Fabric and Azure Databricks were discussed, but no final choice was made; a formal recommendation is pending.
-- N03 - Owner and due date for the formal Fabric-versus-Databricks recommendation - **Domain:** delivery  **Owner:** [NEEDS HUMAN INPUT: owner]  **Reason:** The work was agreed in principle, but no named owner or due date was stated.
-- N04 - Owner and due date for drafting the semantic-layer and cost-visibility requirements - **Domain:** requirements  **Owner:** [NEEDS HUMAN INPUT: owner]  **Reason:** The work was identified, but no named owner or due date was stated.
+- N01 - Final analytics compute platform - **Domain:** target-state  **Owner:** [NEEDS HUMAN INPUT: owner]  **Reason:** Fabric and Azure Databricks were discussed, but no final choice was made; a formal recommendation is pending.
+- N02 - Owner and due date for the formal Fabric-versus-Databricks recommendation - **Domain:** delivery  **Owner:** [NEEDS HUMAN INPUT: owner]  **Reason:** The work was agreed in principle, but no named owner or due date was stated.
+- N03 - Owner and due date for drafting the semantic-layer and cost-visibility requirements - **Domain:** requirements  **Owner:** [NEEDS HUMAN INPUT: owner]  **Reason:** The work was identified, but no named owner or due date was stated.
 
 ## Decisions
 | Pointer | Domain | Decision / outcome | Owner | Evidence / attribution |
@@ -122,7 +121,7 @@ MNC Pvt Ltd stated a strong direction toward Azure because of its Microsoft esta
 - X06 - Compute-independent storage dependency
 - X07 - ADF sufficiency and deferred streaming assumption
 - Q01 - Compute platform selection
-- N02 - Final analytics compute platform remains unresolved
+- N01 - Final analytics compute platform remains unresolved
 
 ### delivery
 - F13 - Cloud cost forecasting difference

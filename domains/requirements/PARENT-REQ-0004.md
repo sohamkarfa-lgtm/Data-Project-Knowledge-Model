@@ -3,7 +3,7 @@ id: PARENT-REQ-0004
 domain: requirements
 type: non-functional-requirement
 status: validated
-owner: "[NEEDS HUMAN INPUT: accountable owner]"
+owner: platform engineer lead
 relates_to: [PARENT-GOV-0001]
 source: "Target State Architecture Discussion 2026-08-28"
 created: "2026-08-28"
