@@ -3,7 +3,7 @@ id: PARENT-ADR-0002
 domain: adr
 type: decision
 status: validated
-owner: "Person D"
+owner: solution-architect
 relates_to: [PARENT-ADR-0001, PARENT-TS-0001, PARENT-DEL-0001, PARENT-REQ-0003, PARENT-REQ-0004, PARENT-REQ-0005, PARENT-REQ-0006]
 source: "Platform Decision: Azure + Microsoft Fabric 2026-09-10"
 created: "2026-09-10"
@@ -29,8 +29,7 @@ This decision is scoped to current reporting-and-analytics-first requirements.
 It may be revisited if MNC's ambitions grow materially toward heavy machine
 learning or data science workloads.
 
-The decision remains draft until this ADR is circulated and signed off by
-Person A.
+The decision is signed off by chief data officer.
 
 ## Alternatives Considered
 - Azure Databricks — not chosen for the current scope because it has a steeper
@@ -51,7 +50,6 @@ Person A.
   before the Supply Chain use case goes live.
 - The Supply Chain use case must run in parallel with the existing mart until
   the new implementation is proven.
-- A Fabric-specific landing-zone plan and team enablement plan are required
-  during Milestone 1.
+- A Fabric-specific landing-zone plan and team enablement plan are required.
 - ADLS Gen2 remains the storage foundation.
 - Heavy ML or data-science growth may require reassessing this decision.

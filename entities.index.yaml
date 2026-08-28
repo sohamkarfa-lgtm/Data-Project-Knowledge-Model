@@ -27,7 +27,7 @@ entities:
   - id: PARENT-EVD-0002
     title: "Azure and Microsoft Fabric decision sign-off evidence"
     domain: evidence
-    status: draft
+    status: validated
     path: domains/evidence/PARENT-EVD-0002.md
 
   - id: PARENT-REQ-0001
@@ -115,15 +115,15 @@ entities:
     path: domains/current-state/PARENT-CS-0007.md
 
   - id: PARENT-GOV-0001
-    title: "Platform vs. data product ownership model (draft)"
+    title: "Platform vs. data product ownership model"
     domain: governance
-    status: draft
+    status: validated
     path: domains/governance/PARENT-GOV-0001.md
 
   - id: PARENT-TS-0001
     title: "Target cloud lakehouse architecture"
     domain: target-state
-    status: draft
+    status: validated
     path: domains/target-state/PARENT-TS-0001.md
 
   - id: PARENT-DEL-0001
@@ -159,7 +159,7 @@ entities:
   - id: PARENT-ADR-0002
     title: "Select Azure and Microsoft Fabric"
     domain: adr
-    status: draft
+    status: validated
     path: adr/PARENT-ADR-0002.md
 
 child_repos:
