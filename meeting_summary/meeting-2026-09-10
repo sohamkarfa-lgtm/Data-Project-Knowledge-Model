@@ -1,0 +1,141 @@
+# Meeting Summary - Platform Decision: Azure + Microsoft Fabric
+
+**Date:** 2026-09-10
+**Participants:** Person A (Chief Data Officer, MNC Pvt Ltd; Client Sponsor); Person B (Head of BI & Reporting, MNC Pvt Ltd); Person C (Head of IT Infrastructure, MNC Pvt Ltd); Person D (Enterprise Architect, Delivery Team); Person E (Platform Engineering Lead, Delivery Team)
+**Purpose:** Decide between Microsoft Fabric and Azure Databricks as the analytics compute engine within the previously selected Azure cloud direction, and identify dependencies and next steps for platform setup.
+
+## Executive summary
+The group evaluated Microsoft Fabric and Azure Databricks against team skill fit, time to first value, cost predictability, existing tool investment reuse, governance and semantic-layer fit, and operational overhead. The group agreed to proceed with Azure and Microsoft Fabric because it better fits the existing GUI-driven and Power BI-oriented environment, supports a shorter path to the Supply Chain use case, offers more predictable capacity-based pricing, and reduces operational overhead. The decision is scoped to current reporting-and-analytics-first requirements and may be revisited if heavy machine-learning or data-science needs grow materially. ADLS Gen2 remains the storage foundation, while Fabric capacity sizing, Entra ID integration, semantic-layer redesign, parallel running, and team enablement are dependencies. Person D will formalize the decision in an ADR and circulate it for Person A's sign-off before it is treated as final.
+
+## Needs human input
+- N01 - Final status of the Azure and Microsoft Fabric decision - **Domain:** governance  **Owner:** Person A  **Reason:** The group agreed to proceed, but Person D stated the ADR must be circulated for Person A's sign-off before the decision is treated as final.
+- N02 - Due date for the ADR circulation and sign-off - **Domain:** governance  **Owner:** Person D  **Reason:** No due date was stated.
+- N03 - Due dates for the metric-definition inventory, Fabric landing-zone plan, and enablement plan - **Domain:** delivery  **Owner:** Person B / Person E  **Reason:** Owners were named, but no due dates were stated.
+- N04 - Capacity SKU and sizing for Milestone 1 - **Domain:** target-state  **Owner:** Person E  **Reason:** A smaller starting SKU was proposed, but the specific SKU and sizing were not decided.
+- N05 - Conditions for revisiting the Fabric decision if ML or data-science needs grow - **Domain:** target-state  **Owner:** [NEEDS HUMAN INPUT: owner]  **Reason:** The transcript says the decision may be revisited if ambitions grow materially, but gives no threshold or owner.
+
+## Decisions
+| Pointer | Domain | Decision / outcome | Owner | Evidence / attribution |
+|---|---|---|---|---|
+| D01 | target-state | Proceed with Azure and Microsoft Fabric as the cloud and analytics compute direction. The decision is agreed in the meeting but pending ADR circulation and Person A's sign-off before being treated as final. | Person A | Person A said, "Let's go with Azure and Microsoft Fabric"; Person D stated formal sign-off remains required. |
+| D02 | target-state | Keep ADLS Gen2 as the storage foundation; Fabric OneLake is interoperable with that open storage foundation. | [NEEDS HUMAN INPUT: owner] | Person E; the group confirmed the prior storage decision is unchanged. |
+| D03 | target-state | Scope the decision to current reporting-and-analytics-first requirements, with the option to revisit if heavy ML or data-science needs grow materially. | [NEEDS HUMAN INPUT: owner] | Person A accepted the trade-off; Person D characterized the scope. |
+| D04 | delivery | Run the Supply Chain use case on Fabric alongside the existing mart until the new implementation is proven. | [NEEDS HUMAN INPUT: owner] | Person D restated the prior parallel-run constraint. |
+
+## Facts and observations
+| Pointer | Domain | Detail | Evidence / attribution |
+|---|---|---|---|
+| F01 | target-state | The options were evaluated against six parameters: team skill fit, time to first value, cost predictability, existing tool investment reuse, governance and semantic-layer fit, and operational overhead. | Person E |
+| F02 | current-state | The warehouse team has a GUI-driven ETL background; team members have explored Power Query, while nobody has used PySpark or Scala. | Person A and Person C |
+| F03 | target-state | Fabric Dataflows and pipelines are closer to the team's existing skill set than Databricks notebooks. | Person E |
+| F04 | engagement | The business already uses Power BI and stakeholders would find a Power BI-like Supply Chain dashboard easier to adopt. | Person B |
+| F05 | target-state | Fabric capacity-based pricing was described as more predictable than Databricks consumption-based cluster pricing for Finance forecasting. | Person E |
+| F06 | engagement | MNC already has Power BI Pro and Premium licensing and an Enterprise Agreement with Microsoft. | Person D and Person C |
+| F07 | target-state | Fabric OneLake and its native Power BI semantic model provide a single place to define metrics for reports. | Person E |
+| F08 | target-state | Fabric's workspace and capacity model was described as requiring less hands-on cluster tuning than Databricks at the starting scale. | Person E |
+| F09 | target-state | Databricks would provide more flexibility for advanced custom transformations, stronger support for heavy data science or ML at scale, and a more open lakehouse format with less platform lock-in. | Person E |
+| F10 | target-state | Fabric capacity must be provisioned and sized; the initial proposal is to start with a smaller capacity SKU and scale with usage. | Person E |
+| F11 | governance | Fabric workspace access is expected to map to existing Microsoft Entra ID groups, with no new identity system. | Person E |
+| F12 | delivery | The team needs enablement on Dataflows Gen2, pipeline orchestration, and the semantic model layer during Milestone 1. | Person D |
+| F13 | current-state | Finance and Sales have duplicated metric definitions, including conflicting revenue definitions. | Person E and Person B |
+
+## Requirements and needs
+| Pointer | Domain | Requirement / need | Owner | Evidence / attribution |
+|---|---|---|---|---|
+| R01 | requirements | The selected platform must support a reporting-and-analytics-first delivery focus for the current needs. | [NEEDS HUMAN INPUT: owner] | Person E described the current requirements as reporting-and-analytics-first. |
+| R02 | requirements | The platform should fit the existing GUI-driven ETL and Power BI skill base to support day-one productivity and adoption. | [NEEDS HUMAN INPUT: owner] | Person E, Person B, and Person C |
+| R03 | requirements | Finance needs a pricing model that is sufficiently predictable to forecast and avoid unexpected cost spikes. | [NEEDS HUMAN INPUT: owner] | Person A and Person E |
+| R04 | requirements | The semantic layer must define canonical metrics once before the Supply Chain use case goes live, avoiding another Finance-versus-Sales duplication problem. | [NEEDS HUMAN INPUT: owner] | Person E and Person A |
+| R05 | requirements | Platform access must use existing Microsoft Entra ID groups rather than a separate identity system. | [NEEDS HUMAN INPUT: owner] | Person E |
+| R06 | requirements | The platform setup must support the existing parallel-run constraint while the Supply Chain use case is validated. | [NEEDS HUMAN INPUT: owner] | Person D |
+| R07 | requirements | A structured enablement plan must run in parallel with Milestone 1 for platform and semantic-model skills. | [NEEDS HUMAN INPUT: owner] | Person D |
+
+## Actions
+| Action | Domain | Owner | Due date | Status | Evidence / attribution |
+|---|---|---|---|---|---|
+| A01 - Draft the formal architecture decision record for Azure and Microsoft Fabric, including the evaluation parameters and dependencies, and circulate it for sign-off. | governance | Person D | [NEEDS HUMAN INPUT: due date] | proposed | Person D |
+| A02 - Start the Fabric capacity procurement conversation with the Microsoft account team. | delivery | Person C | This week | committed | Person C |
+| A03 - Pull together current metric definitions across the four marts as input to the semantic-layer exercise. | requirements | Person B | [NEEDS HUMAN INPUT: due date] | committed | Person B |
+| A04 - Draft the Milestone 1 landing-zone plan specifically for Fabric. | delivery | Person E | [NEEDS HUMAN INPUT: due date] | committed | Person E |
+| A05 - Draft the team enablement plan outline for Dataflows Gen2, pipeline orchestration, and the semantic model layer. | delivery | Person E | [NEEDS HUMAN INPUT: due date] | committed | Person E |
+
+## Risks, assumptions, and dependencies
+| Pointer | Type | Domain | Detail | Owner | Evidence / attribution |
+|---|---|---|---|---|---|
+| X01 | RISK / CONCERN | target-state | If MNC's ambitions grow toward heavy ML or data science at scale, Fabric may become less compelling than Databricks and the platform decision may need to be revisited. | [NEEDS HUMAN INPUT: owner] | Person E and Person D |
+| X02 | RISK / CONCERN | delivery | Fabric capacity sizing and procurement could become a blocker if not started before the ADR sign-off. | Person C | Person C committed to starting the Microsoft account-team conversation this week. |
+| X03 | RISK / CONCERN | requirements | Selecting Fabric alone will not resolve duplicated metrics; canonical metric definition requires a separate semantic-layer exercise. | Person B | Person E; Person A agreed it must not be an afterthought. |
+| X04 | ASSUMPTION | target-state | A smaller Fabric capacity SKU can support Milestone 1 initially and scale as usage grows. | Person E | Person E proposed this approach; exact sizing remains open. |
+| X05 | DEPENDENCY | governance | Fabric workspace access depends on integration with MNC's existing Microsoft Entra ID groups. | [NEEDS HUMAN INPUT: owner] | Person E |
+| X06 | DEPENDENCY | delivery | Fabric-specific landing-zone planning and team enablement must proceed alongside Milestone 1. | Person E | Person D and Person E |
+| X07 | DEPENDENCY | current-state | The Supply Chain implementation depends on the existing mart continuing to operate until the Fabric implementation is proven. | [NEEDS HUMAN INPUT: owner] | Person D |
+
+## Open questions
+| Question | Domain | Owner | Next step / due date | Evidence / attribution |
+|---|---|---|---|---|
+| Q01 - When will the ADR be circulated and when will Person A complete sign-off? | governance | Person D / Person A | [NEEDS HUMAN INPUT: due date] | Person D said sign-off is required before the decision is final. |
+| Q02 - What Fabric capacity SKU and sizing should be used for Milestone 1? | target-state | Person E | Propose starting capacity and sizing; [NEEDS HUMAN INPUT: due date] | Person E |
+| Q03 - Which canonical metric definitions should be established first for the semantic layer? | requirements | Person B | Inventory current definitions; [NEEDS HUMAN INPUT: due date] | Person B and Person E |
+| Q04 - What level of ML or data-science growth would trigger a reassessment of Fabric versus Databricks? | target-state | [NEEDS HUMAN INPUT: owner] | Define reassessment criteria; [NEEDS HUMAN INPUT: due date] | Person D |
+
+## Domain index
+
+### engagement
+- F04 - Power BI familiarity and dashboard adoption
+- F06 - Existing Microsoft licensing and commercial relationship
+
+### evidence
+- No pointers classified primarily as evidence.
+
+### requirements
+- R01 - Reporting-and-analytics-first focus
+- R02 - Fit with existing GUI and Power BI skills
+- R03 - Predictable pricing for Finance
+- R04 - Canonical metrics before Supply Chain go-live
+- R05 - Entra ID group-based access
+- R06 - Parallel-run support
+- R07 - Parallel enablement plan
+- A03 - Inventory current metric definitions
+- X03 - Semantic-layer exercise remains necessary
+- Q03 - Initial canonical metric definitions
+
+### current-state
+- F02 - Existing GUI-driven ETL skills and lack of PySpark/Scala experience
+- F13 - Duplicated Finance and Sales metrics
+- X07 - Existing mart must remain operational
+
+### governance
+- A01 - Formal architecture decision record
+- F11 - Entra ID group integration
+- X05 - Entra ID integration dependency
+- N01 - Final decision status
+- N02 - ADR circulation and sign-off timing
+- Q01 - ADR sign-off timing
+
+### target-state
+- D01 - Azure and Microsoft Fabric direction pending formal sign-off
+- D02 - ADLS Gen2 storage foundation
+- D03 - Decision scope and possible ML reassessment
+- F01 - Evaluation parameters
+- F03 - Fabric skill fit
+- F05 - Capacity-based pricing predictability
+- F07 - OneLake and Power BI semantic model
+- F08 - Reduced operational tuning
+- F09 - Databricks trade-offs
+- F10 - Fabric capacity sizing
+- X01 - Future ML/data-science reassessment risk
+- X04 - Initial capacity sizing assumption
+- Q02 - Milestone 1 capacity SKU and sizing
+- Q04 - ML reassessment threshold
+- N04 - Capacity SKU and sizing
+- N05 - ML reassessment conditions
+
+### delivery
+- D04 - Parallel Supply Chain validation
+- F12 - Enablement needs during Milestone 1
+- A02 - Capacity procurement conversation
+- A04 - Fabric landing-zone plan
+- A05 - Team enablement plan
+- X02 - Capacity procurement risk
+- X06 - Landing-zone and enablement dependency
+- N03 - Action due dates

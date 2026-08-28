@@ -24,5 +24,7 @@ not require multi-month infrastructure lead time.
 - Target onboarding lead time confirmed with business stakeholders (open item).
 - At least one net-new use case delivered end-to-end within that target
   during the MVP to validate the claim.
+- One real business use case, preferably Supply Chain inventory visibility,
+  is live on the new platform within the current quarter.
 - Availability and scope of the business-user self-service option are defined
   and validated.

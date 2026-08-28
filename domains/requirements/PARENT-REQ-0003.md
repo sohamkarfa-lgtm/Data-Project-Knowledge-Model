@@ -13,7 +13,7 @@ tags: [migration, coexistence, business-continuity]
 ## Statement
 The modernization program shall avoid a big-bang cutover and shall run the
 existing and modernized data flows in parallel until each business-critical
-component has been proven.
+component, including the initial Supply Chain use case, has been proven.
 
 ## Rationale
 The four existing data marts are business-critical daily, including Finance's
@@ -27,3 +27,5 @@ reporting to unacceptable transition risk.
   retired.
 - The four existing marts are migrated incrementally rather than through one
   cutover event.
+- The Supply Chain use case runs in parallel with the existing mart during
+  validation.

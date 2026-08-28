@@ -1,0 +1,87 @@
+# Meeting Transcript — Platform Decision: Azure + Microsoft Fabric
+
+**Client:** MNC Pvt Ltd
+**Meeting Type:** Target State Decision Session — Cloud Platform & Compute Engine Selection
+**Date:** 2026-09-10
+**Duration:** 00:35:20
+
+**Attendees:**
+- **Person A** — Chief Data Officer, MNC Pvt Ltd (Client Sponsor)
+- **Person B** — Head of BI & Reporting, MNC Pvt Ltd
+- **Person C** — Head of IT Infrastructure, MNC Pvt Ltd
+- **Person D** — Enterprise Architect, Delivery Team
+- **Person E** — Platform Engineering Lead, Delivery Team
+
+---
+
+**[00:00:12] Person D:** Thanks everyone. Last session we narrowed the cloud provider to Azure and left one open item — Fabric versus Databricks as the compute and analytics engine. We said we'd come back with a clear recommendation rather than leaving it open, so that's today's goal: walk the parameters, walk the dependencies, and leave this room with a decision.
+
+**[00:00:45] Person A:** Good, I don't want this dragging into next quarter. What's the recommendation?
+
+**[00:00:52] Person D:** We'll get there, but let's walk the reasoning first so it's not just "trust us" — this becomes an architecture decision record either way, and it needs to hold up if someone questions it in six months. Person E, do you want to start with the parameter walkthrough?
+
+**[00:01:15] Person E:** Sure. We evaluated both options against six parameters: team skill fit, time to first value, cost predictability, existing tool investment reuse, governance and semantic layer fit, and operational overhead. Let's take them one at a time.
+
+**[00:01:35] Person E:** First — team skill fit. Person A, you flagged last time that your warehouse team comes from a GUI-driven ETL background, not a notebook/code-first background. Fabric's Dataflows and pipeline experience are much closer to that existing skill set than Databricks notebooks would be. That's a real point in Fabric's favor for day-one productivity.
+
+**[00:02:10] Person C:** That matches what I'm hearing from the team informally too. A couple of them have already poked around Power Query, which Fabric leans on heavily. Nobody on the team has touched PySpark or Scala.
+
+**[00:02:30] Person D:** Second parameter — time to first value. Given the target of getting Supply Chain's inventory use case live this quarter, Fabric's tighter integration with Power BI — which your business already lives in — gives a shorter path from data to a dashboard your stakeholders will recognize. Databricks would need an additional semantic/BI integration step that Fabric gives you natively.
+
+**[00:03:05] Person B:** That lines up with what I care about most. If Supply Chain sees a dashboard that still feels like Power BI, adoption is going to be a lot easier than if it's a whole new interface they have to learn.
+
+**[00:03:25] Person E:** Third — cost predictability, which Person A you raised specifically last time. Fabric uses a capacity-based pricing model — you provision a capacity SKU and everything running in that workspace draws from it, which is more predictable than Databricks' consumption-based cluster pricing where costs scale more directly and less predictably with usage patterns.
+
+**[00:03:55] Person A:** That's actually a meaningful point for me. Finance specifically asked for something they could forecast, not something that could spike unexpectedly.
+
+**[00:04:10] Person D:** Fourth — existing tool investment reuse. You already have Power BI Pro and Premium licensing in place, and an existing Enterprise Agreement with Microsoft. Fabric capacity can lean on that existing commercial relationship. Moving to Databricks wouldn't lose you the EA, but it would mean running a largely separate platform alongside investments you've already made in Power BI.
+
+**[00:04:45] Person C:** Confirmed — our EA already gives us some room to negotiate Fabric capacity units without it being a from-scratch procurement conversation.
+
+**[00:05:00] Person E:** Fifth — governance and semantic layer fit. This one matters a lot given what came up last time about Finance and Sales disagreeing on revenue definitions. Fabric's OneLake and its native Power BI semantic model give you a single place to define a metric once and have every report — current and future — draw from that same definition. Databricks would need a separate metrics-layer tool bolted on to get the same guarantee.
+
+**[00:05:40] Person B:** That's the single biggest thing I want fixed. If Fabric gets us there more directly, that matters more to me than almost anything else on this list.
+
+**[00:05:55] Person D:** Sixth — operational overhead. Person C, you were clear last time that your infrastructure team is small and you want to lean into managed services. Both platforms are largely PaaS, but Fabric's workspace and capacity model requires less hands-on cluster tuning than Databricks typically does, at least at the scale you're starting from.
+
+**[00:06:30] Person C:** Agreed, that's consistent with what I said. I don't have headcount to dedicate someone to tuning Spark clusters.
+
+**[00:06:45] Person A:** Okay — where does Databricks actually win, if anywhere? I want to know what we're giving up before I sign off on this.
+
+**[00:07:00] Person E:** Fair question. Databricks would give you more flexibility for advanced, custom transformation logic, stronger support if you eventually do heavy data science or ML workloads at scale, and a more open lakehouse format with less platform lock-in. If MNC's ambitions grow toward heavy ML/data science work, that's where Databricks becomes more compelling. Today, the requirements in front of us are reporting-and-analytics-first, not ML-first.
+
+**[00:07:35] Person A:** Understood. That's a reasonable trade-off to accept for now — we can revisit if our needs shift toward ML down the line. That's not where we are today.
+
+**[00:07:50] Person D:** That's an important point to capture — this decision is scoped to today's requirements, not a permanent rejection of Databricks. If ML ambitions grow materially, that's grounds to revisit.
+
+**[00:08:10] Person D:** Now let's talk dependencies, because the decision creates a few things that need to happen before or alongside platform setup.
+
+**[00:08:25] Person E:** First dependency — storage still lands in ADLS Gen2 regardless, so that decision from last time doesn't change; Fabric's OneLake sits on top of, and is interoperable with, that same open storage foundation. Second — Fabric capacity needs to be provisioned and sized; we'll propose starting with a smaller capacity SKU for Milestone 1 and scaling as usage grows, tying back to the cost-visibility requirement Person A raised.
+
+**[00:09:00] Person C:** I'll need to coordinate the capacity purchase through our Microsoft account team — that's on me to kick off this week.
+
+**[00:09:10] Person E:** Third dependency — identity. Fabric workspace access needs to map to your existing Entra ID groups, which Person C's team already manages, so no new identity system, consistent with what was raised last time.
+
+**[00:09:30] Person D:** Fourth — skills. Even with Fabric being closer to the team's existing skill set, there's still a ramp-up needed on Dataflows Gen2, pipeline orchestration, and the semantic model layer specifically. We'd recommend a structured enablement plan running in parallel with Milestone 1, not a full stop-and-train-first approach.
+
+**[00:10:05] Person B:** My team will need some of that too, particularly on the semantic model side since that's where we'll be defining shared metrics going forward.
+
+**[00:10:20] Person E:** Fifth dependency — the semantic layer redesign itself. Deciding on Fabric doesn't automatically fix the Finance-vs-Sales metric duplication — that requires an actual exercise to define canonical metrics once, which should happen early, ideally before the Supply Chain use case goes live, so we're not repeating the same mistake on new infrastructure.
+
+**[00:11:00] Person A:** Agreed, that can't be an afterthought.
+
+**[00:11:10] Person D:** Sixth and last dependency — the parallel-run constraint from session one still applies. The Supply Chain use case runs alongside the existing mart until it's proven; Fabric doesn't change that constraint, it's independent of which engine we picked.
+
+**[00:11:35] Person A:** Alright — I've heard enough. Let's go with Azure and Microsoft Fabric. I want that written up formally as a decision, not just meeting notes, given how much weight it carries.
+
+**[00:11:55] Person D:** Understood — we'll draft it as a formal architecture decision record, referencing today's parameters and the dependencies we just walked through, and circulate it for your sign-off before we treat it as final.
+
+**[00:12:10] Person C:** I'll start the capacity procurement conversation with our Microsoft account team this week so it's not a blocker once the ADR is signed off.
+
+**[00:12:20] Person B:** And I'll start pulling together the current metric definitions across the four marts so we have a starting point for the semantic layer exercise.
+
+**[00:12:35] Person E:** I'll draft the Milestone 1 landing zone plan against Fabric specifically, and the enablement plan outline for the team's ramp-up.
+
+**[00:12:50] Person D:** Great — I think that gives us a clear, well-reasoned decision and a concrete set of next steps. Thanks everyone.
+
+**[00:13:00] Meeting ends.**

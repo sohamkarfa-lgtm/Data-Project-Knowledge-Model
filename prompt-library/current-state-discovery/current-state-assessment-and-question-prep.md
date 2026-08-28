@@ -1,4 +1,4 @@
-# Prompt 03 — Current-State Assessment & Next-Meeting Question Prep
+# Prompt 00 — Current-State Assessment & Next-Meeting Question Prep
 
 **Use when:** you have one or more populated `current-state` domain md files
 (and/or the evidence entries behind them) and want to prepare for an

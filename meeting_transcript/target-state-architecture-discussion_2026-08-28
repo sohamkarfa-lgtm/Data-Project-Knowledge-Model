@@ -1,0 +1,81 @@
+# Meeting Transcript — Target State Architecture Discussion
+
+**Client:** MNC Pvt Ltd
+**Meeting Type:** Target State Discovery — Cloud Platform & Data Architecture Direction
+**Date:** 2026-08-28
+**Duration:** 00:38:45
+
+**Attendees:**
+- **Person A** — Chief Data Officer, MNC Pvt Ltd (Client Sponsor)
+- **Person B** — Head of BI & Reporting, MNC Pvt Ltd
+- **Person C** — Head of IT Infrastructure, MNC Pvt Ltd
+- **Person D** — Enterprise Architect, Delivery Team
+- **Person E** — Platform Engineering Lead, Delivery Team
+
+---
+
+**[00:00:10] Person D:** Thanks for joining. Last session we captured your current state in detail — the on-prem warehouse, the four data marts, the GUI ETL tool. Today we want to start narrowing down target state, specifically the platform and cloud direction, so Person E's team can start scoping the landing zone. Person A, where's your head at on cloud provider?
+
+**[00:00:38] Person A:** Honestly, it's not really an open question for us. We're a Microsoft shop end to end — Windows Server estate, Active Directory for identity, Office 365, and Power BI is already how the business consumes most of our existing dashboards. Going anywhere other than Azure would mean fighting our own organization on identity and licensing, on top of the actual technical migration.
+
+**[00:01:15] Person C:** Right, and from an infrastructure side, we already have an Enterprise Agreement with Microsoft that covers a good chunk of this. If we went AWS or GCP we'd be negotiating a net-new commercial relationship and losing volume discounts we already have. That's a real cost consideration, not just a preference.
+
+**[00:01:45] Person E:** That's helpful — it narrows things considerably. Within Azure, there are a few different ways to build the analytics platform itself. I want to walk through the main options rather than assume. Are you familiar with Microsoft Fabric?
+
+**[00:02:05] Person B:** We've seen the marketing, and honestly some of our business users are already asking about it because it's tied so closely to Power BI, which they already know. There's an appetite from the business side to stay inside tools that feel familiar.
+
+**[00:02:30] Person E:** That's a fair pull. The trade-off is Fabric is still maturing quickly — some capabilities are ahead of others, and it leans toward a more managed, opinionated experience. The alternative is Azure Databricks, which gives more flexibility and a stronger open lakehouse foundation with Unity Catalog for governance, but has a steeper learning curve for teams used to point-and-click tools.
+
+**[00:03:10] Person A:** Our warehouse lead — sorry, he's not on this call — but he and his team come from a very GUI-driven ETL background. I worry about the learning curve on Databricks if we lean heavily on notebooks and code.
+
+**[00:03:35] Person D:** That's an important constraint to weigh. It doesn't have to be all-or-nothing on day one — some organizations start with more guided tooling and add flexibility as the team's skills grow. What matters most to you in terms of what the platform needs to be good at first?
+
+**[00:04:05] Person B:** Speed to first real report. If it takes us six months to get anything usable out of a new platform, the business is going to lose confidence before we've proven anything.
+
+**[00:04:20] Person C:** And from my side — manageability. My infrastructure team is small. Whatever we pick, we can't be standing up and patching a lot of custom infrastructure ourselves. I'd rather lean into managed services even if it costs a bit more, than take on more operational burden.
+
+**[00:04:50] Person E:** That's useful — leaning toward managed services is consistent with either Fabric or Databricks on Azure, since both are largely PaaS. Let's talk storage. Regardless of which compute engine we land on, we'd recommend landing data in Azure Data Lake Storage Gen2 as the common foundation — that keeps you flexible even if the compute layer decision evolves later.
+
+**[00:05:30] Person A:** That makes sense to me — don't want to be locked into one engine at the storage layer.
+
+**[00:05:40] Person D:** Let's talk ingestion. Your source is still that transactional database with the thousand tables. What's the appetite for real-time or near-real-time data versus sticking with batch for now?
+
+**[00:06:05] Person B:** For most of what we report on, nightly is genuinely fine — nobody's asking for real-time revenue numbers. The one exception is Supply Chain — they've mentioned wanting to see inventory positions more frequently, closer to hourly, because stockouts are a real cost to them.
+
+**[00:06:35] Person C:** If we're moving to Azure anyway, Azure Data Factory is the obvious ingestion tool given it's native and our team can lean on Microsoft support and existing skills from other Azure work we've done for non-data projects.
+
+**[00:07:00] Person E:** Agreed, ADF is a strong default for orchestration and batch ingestion, and it can also handle the more frequent Supply Chain use case without needing a separate streaming platform on day one. We can revisit true streaming with Event Hubs later if the need grows beyond hourly.
+
+**[00:07:30] Person D:** Let's talk identity and security, since Person C you mentioned Active Directory already.
+
+**[00:07:40] Person C:** We're fully on Azure AD — well, Microsoft Entra ID now — for the corporate identity. Whatever platform we choose, we want role-based access tied directly to our existing AD groups. We don't want a second identity system to manage.
+
+**[00:08:05] Person E:** That's straightforward on Azure regardless of Fabric vs. Databricks — both integrate natively with Entra ID for authentication and can map to your existing groups for authorization.
+
+**[00:08:25] Person A:** Good. One more thing on my mind — cost predictability. Our finance team gets nervous about consumption-based pricing that's hard to forecast. Is that something we need to plan for carefully here?
+
+**[00:08:50] Person E:** It's a fair concern with any cloud-native platform — compute costs scale with usage, which is the whole point of the elasticity, but it does mean forecasting looks different from a fixed hardware budget. We'd recommend starting with a capped dev/test environment and close cost monitoring during Milestone 1, so Finance has real data points before we scale usage across all four business domains.
+
+**[00:09:20] Person A:** That's reasonable. I'd want that cost tracking visible to Finance from week one, not after the fact.
+
+**[00:09:35] Person D:** Noted — we'll capture that as a delivery requirement, not just a nice-to-have.
+
+**[00:09:45] Person B:** Can I raise something about the marts? Whatever we land on, I really want the new platform to fix the duplicated-logic problem we talked about last time — Finance and Sales defining revenue differently. Is that something the platform choice affects?
+
+**[00:10:15] Person D:** It does, actually — this is a strong argument for building a shared semantic layer once, rather than replicating business logic per mart again. Both Fabric and Databricks support that pattern; Fabric's approach is more tied into Power BI's own semantic models, Databricks would pair with a separate metrics layer tool. Given your business already lives in Power BI, that's a point in Fabric's favor.
+
+**[00:10:50] Person A:** That's a meaningful point for me. I don't want us to rebuild the same duplication problem on new infrastructure.
+
+**[00:11:05] Person C:** Agreed. Whatever we pick, I want that written down as a hard requirement, not just an aspiration.
+
+**[00:11:20] Person E:** Understood. Let's talk timeline expectations before we wrap — what does success look like for you in the first few months?
+
+**[00:11:40] Person A:** Honestly, I'd like to see one real business use case — probably Supply Chain, given the inventory visibility pain — live on whatever new platform we pick within the current quarter. Something the business can actually point to.
+
+**[00:12:05] Person B:** I'd add: it needs to run in parallel with the existing mart, not replace it yet. We can't risk Supply Chain's existing reporting breaking while we prove the new platform out.
+
+**[00:12:20] Person D:** That's consistent with the no-big-bang constraint from our first session, good to have it reconfirmed for target state specifically. I think we have what we need to bring back a formal recommendation between Fabric and Databricks, with a clear rationale, rather than leaving it open. We'll also draft the semantic layer and cost-visibility requirements you raised today.
+
+**[00:12:50] Person A:** Sounds good. Appreciate you pushing us to be specific rather than just saying "Azure" and leaving it there.
+
+**[00:13:00] Meeting ends.**

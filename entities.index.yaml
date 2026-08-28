@@ -42,6 +42,30 @@ entities:
     status: draft
     path: domains/requirements/PARENT-REQ-0003.md
 
+  - id: PARENT-REQ-0004
+    title: "Entra ID-integrated role-based access"
+    domain: requirements
+    status: draft
+    path: domains/requirements/PARENT-REQ-0004.md
+
+  - id: PARENT-REQ-0005
+    title: "Finance-visible cloud cost tracking"
+    domain: requirements
+    status: draft
+    path: domains/requirements/PARENT-REQ-0005.md
+
+  - id: PARENT-REQ-0006
+    title: "Shared semantic layer for business metrics"
+    domain: requirements
+    status: draft
+    path: domains/requirements/PARENT-REQ-0006.md
+
+  - id: PARENT-REQ-0007
+    title: "Nightly and hourly ingestion capability"
+    domain: requirements
+    status: draft
+    path: domains/requirements/PARENT-REQ-0007.md
+
   - id: PARENT-CS-0001
     title: "On-prem data warehouse architecture (as-is)"
     domain: current-state
@@ -108,11 +132,29 @@ entities:
     status: validated
     path: domains/delivery/PARENT-DEL-0002.md
 
+  - id: PARENT-DEL-0003
+    title: "Risk: cloud cost forecasting uncertainty"
+    domain: delivery
+    status: draft
+    path: domains/delivery/PARENT-DEL-0003.md
+
+  - id: PARENT-DEL-0004
+    title: "Workstream: Fabric platform foundation"
+    domain: delivery
+    status: draft
+    path: domains/delivery/PARENT-DEL-0004.md
+
   - id: PARENT-ADR-0001
     title: "Adopt cloud-first modernization strategy"
     domain: adr
     status: validated
     path: adr/PARENT-ADR-0001.md
+
+  - id: PARENT-ADR-0002
+    title: "Select Azure and Microsoft Fabric"
+    domain: adr
+    status: draft
+    path: adr/PARENT-ADR-0002.md
 
 child_repos: []
   # Example once Platform Engineering repo exists:

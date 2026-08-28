@@ -7,7 +7,7 @@ owner: governance
 relates_to: [PARENT-ENG-0002]
 source: "Governance Alignment Session 2026-08-15"
 created: "2026-08-15"
-tags: [ownership]
+tags: [ownership, identity, access-control, managed-services]
 ---
 
 ## Summary
@@ -23,6 +23,10 @@ domain team ("data mesh"-influenced, not full decentralization at MVP stage).
 - Business-unit-aligned data product ownership is a target-state ambition,
   not required for MVP — MVP keeps a single central data engineering team
   producing the first use case.
+- Platform authentication and authorization shall integrate with existing
+  Microsoft Entra ID groups using role-based access.
+- The operating model should favor managed services because the
+  infrastructure team is small.
 
 ## Applies To
 All engineering-discipline knowledge model repos; referenced by their

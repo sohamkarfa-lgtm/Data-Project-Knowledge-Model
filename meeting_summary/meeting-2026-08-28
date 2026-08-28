@@ -1,0 +1,134 @@
+# Meeting Summary - Target State Architecture Discussion
+
+**Date:** 2026-08-28
+**Participants:** Person A (Chief Data Officer, MNC Pvt Ltd; Client Sponsor); Person B (Head of BI & Reporting, MNC Pvt Ltd); Person C (Head of IT Infrastructure, MNC Pvt Ltd); Person D (Enterprise Architect, Delivery Team); Person E (Platform Engineering Lead, Delivery Team)
+**Purpose:** Narrow the target-state platform and cloud direction so the delivery team can begin scoping the landing zone, and identify initial requirements and recommendation work.
+
+## Executive summary
+MNC Pvt Ltd stated a strong direction toward Azure because of its Microsoft estate, existing Enterprise Agreement, Entra ID, Office 365, and Power BI usage. The analytics compute decision remains open between Microsoft Fabric and Azure Databricks; business familiarity, speed, and manageability favor guided managed tooling, while flexibility and an open lakehouse favor Databricks. Azure Data Lake Storage Gen2 was recommended as a compute-independent storage foundation, with Azure Data Factory as the default for batch and hourly ingestion. The first target-state use case should be Supply Chain inventory visibility, delivered in parallel with the existing mart within the current quarter. A shared semantic layer and Finance-visible cost tracking from week one were identified as hard requirements. The date needs confirmation because the transcript header says 2026-09-03 while the supplied meeting context and summary filename identify 2026-08-28.
+
+## Needs human input
+- N01 - Meeting date - **Domain:** [NEEDS HUMAN INPUT: domain classification]  **Owner:** [NEEDS HUMAN INPUT: owner]  **Reason:** The supplied meeting context and transcript filename indicate 2026-08-28, but the transcript header states 2026-09-03.
+- N02 - Final analytics compute platform - **Domain:** target-state  **Owner:** [NEEDS HUMAN INPUT: owner]  **Reason:** Fabric and Azure Databricks were discussed, but no final choice was made; a formal recommendation is pending.
+- N03 - Owner and due date for the formal Fabric-versus-Databricks recommendation - **Domain:** delivery  **Owner:** [NEEDS HUMAN INPUT: owner]  **Reason:** The work was agreed in principle, but no named owner or due date was stated.
+- N04 - Owner and due date for drafting the semantic-layer and cost-visibility requirements - **Domain:** requirements  **Owner:** [NEEDS HUMAN INPUT: owner]  **Reason:** The work was identified, but no named owner or due date was stated.
+
+## Decisions
+| Pointer | Domain | Decision / outcome | Owner | Evidence / attribution |
+|---|---|---|---|---|
+| D01 | target-state | Azure is the stated cloud direction for the target state. | [NEEDS HUMAN INPUT: owner] | Person A said going elsewhere was not an open question for the organization; Person C supported the direction with Enterprise Agreement and cost considerations. |
+| D02 | target-state | Azure Data Lake Storage Gen2 is the recommended common storage foundation, independent of the eventual compute engine. | [NEEDS HUMAN INPUT: owner] | Person E recommended it; Person A agreed that storage should avoid lock-in. |
+| D03 | current-state | The modernization must run in parallel with the existing mart for the initial Supply Chain proof, rather than use a big-bang replacement. | [NEEDS HUMAN INPUT: owner] | Person B stated the parallel-running need; Person D reconfirmed the no-big-bang constraint. |
+
+## Facts and observations
+| Pointer | Domain | Detail | Evidence / attribution |
+|---|---|---|---|
+| F01 | engagement | MNC is a Microsoft shop with Windows Server, Active Directory, Office 365, and Power BI already in use. | Person A |
+| F02 | engagement | MNC has an Enterprise Agreement with Microsoft covering a significant portion of the proposed direction. | Person C |
+| F03 | engagement | Business users already know Power BI and are asking about Fabric because of its close connection to Power BI. | Person B |
+| F04 | current-state | The warehouse lead and team come from a GUI-driven ETL background; the warehouse lead was not present. | Person A |
+| F05 | target-state | Fabric offers a more managed and opinionated experience but is maturing quickly, with capabilities at different levels of maturity. | Person E |
+| F06 | target-state | Azure Databricks offers more flexibility and an open lakehouse foundation with Unity Catalog, but has a steeper learning curve for teams used to point-and-click tools. | Person E |
+| F07 | target-state | Both Fabric and Azure Databricks are largely PaaS and integrate with Entra ID. | Person E |
+| F08 | current-state | Most reporting can use nightly ingestion; Supply Chain has expressed a need for inventory positions closer to hourly because stockouts are costly. | Person B |
+| F09 | target-state | Azure Data Factory can support batch orchestration and the more frequent Supply Chain use case without a separate streaming platform initially. | Person E |
+| F10 | target-state | True streaming using Event Hubs could be revisited if the need grows beyond hourly. | Person E |
+| F11 | current-state | Finance and Sales currently define revenue differently across marts, creating duplicated business logic. | Person B |
+| F12 | target-state | Fabric's semantic-model approach is a point in its favor because the business already uses Power BI; Databricks would pair with a separate metrics-layer tool. | Person D |
+| F13 | delivery | Cost forecasting will differ from the existing fixed hardware budget because cloud-native compute costs scale with usage. | Person E |
+
+## Requirements and needs
+| Pointer | Domain | Requirement / need | Owner | Evidence / attribution |
+|---|---|---|---|---|
+| R01 | requirements | The initial platform must deliver a first real business report quickly; a six-month wait would risk business confidence. | [NEEDS HUMAN INPUT: owner] | Person B |
+| R02 | requirements | The platform should favor managed services to limit custom infrastructure setup and patching for the small infrastructure team. | [NEEDS HUMAN INPUT: owner] | Person C |
+| R03 | requirements | Platform authorization must use role-based access mapped to existing Microsoft Entra ID groups, without a second identity system. | [NEEDS HUMAN INPUT: owner] | Person C |
+| R04 | requirements | Finance must have visible cost tracking from week one. | [NEEDS HUMAN INPUT: owner] | Person A |
+| R05 | requirements | The new platform must provide one shared semantic layer so business logic and metrics are not duplicated across marts. | [NEEDS HUMAN INPUT: owner] | Person B raised the duplicated-logic problem; Person C requested this as a hard requirement. |
+| R06 | requirements | One real business use case, probably Supply Chain inventory visibility, should be live on the selected platform within the current quarter. | [NEEDS HUMAN INPUT: owner] | Person A |
+| R07 | requirements | The Supply Chain use case must run in parallel with the existing mart until the new implementation is proven. | [NEEDS HUMAN INPUT: owner] | Person B |
+| R08 | requirements | The initial ingestion approach should support nightly reporting and closer-to-hourly Supply Chain inventory updates. | [NEEDS HUMAN INPUT: owner] | Person B |
+
+## Actions
+| Action | Domain | Owner | Due date | Status | Evidence / attribution |
+|---|---|---|---|---|---|
+| A01 - Produce a formal recommendation between Microsoft Fabric and Azure Databricks, with clear rationale. | target-state | [NEEDS HUMAN INPUT: owner] | [NEEDS HUMAN INPUT: due date] | proposed | Person D |
+| A02 - Draft the shared semantic-layer requirement and cost-visibility requirement. | requirements | [NEEDS HUMAN INPUT: owner] | [NEEDS HUMAN INPUT: due date] | proposed | Person D said these would be drafted. |
+| A03 - Begin scoping the Azure landing zone based on the target-state direction. | delivery | [NEEDS HUMAN INPUT: owner] | [NEEDS HUMAN INPUT: due date] | proposed | Person D stated the platform direction would enable Person E's team to start scoping. |
+
+## Risks, assumptions, and dependencies
+| Pointer | Type | Domain | Detail | Owner | Evidence / attribution |
+|---|---|---|---|---|---|
+| X01 | RISK / CONCERN | target-state | A Databricks-first approach may create a learning-curve risk for the GUI-driven ETL team, especially if notebooks and code are central. | [NEEDS HUMAN INPUT: owner] | Person A |
+| X02 | RISK / CONCERN | target-state | Fabric's rapidly changing maturity means capability fit should be checked before selection. | [NEEDS HUMAN INPUT: owner] | Person E |
+| X03 | RISK / CONCERN | delivery | Consumption-based cloud pricing may be difficult for Finance to forecast. | [NEEDS HUMAN INPUT: owner] | Person A raised the concern; Person E described the pricing implication. |
+| X04 | ASSUMPTION | delivery | A capped dev/test environment and close cost monitoring during Milestone 1 will provide Finance with useful data before broader scaling. | [NEEDS HUMAN INPUT: owner] | Person E recommended this approach; Person A accepted it as reasonable. |
+| X05 | DEPENDENCY | governance | The selected platform must integrate with existing Entra ID groups for authentication and authorization. | [NEEDS HUMAN INPUT: owner] | Person C and Person E |
+| X06 | DEPENDENCY | target-state | The compute-engine decision should not prevent use of ADLS Gen2 as the common storage layer. | [NEEDS HUMAN INPUT: owner] | Person E and Person A |
+| X07 | ASSUMPTION | target-state | Azure Data Factory is sufficient for the initial hourly Supply Chain need; Event Hubs is deferred unless the need grows beyond hourly. | [NEEDS HUMAN INPUT: owner] | Person E |
+| X08 | DEPENDENCY | delivery | The Supply Chain proof depends on keeping the existing mart operational while the new platform is validated. | [NEEDS HUMAN INPUT: owner] | Person B and Person D |
+
+## Open questions
+| Question | Domain | Owner | Next step / due date | Evidence / attribution |
+|---|---|---|---|---|
+| Q01 - Should the target analytics compute platform be Microsoft Fabric or Azure Databricks? | target-state | [NEEDS HUMAN INPUT: owner] | Formal recommendation pending; [NEEDS HUMAN INPUT: due date] | Person D |
+| Q02 - Are any Supply Chain requirements beyond hourly that would justify true streaming? | requirements | [NEEDS HUMAN INPUT: owner] | Revisit Event Hubs if the need grows beyond hourly; [NEEDS HUMAN INPUT: due date] | Person E |
+| Q03 - What cost model and monitoring thresholds will Finance use when usage scales beyond the initial dev/test environment? | delivery | [NEEDS HUMAN INPUT: owner] | Gather Milestone 1 cost data; [NEEDS HUMAN INPUT: due date] | Person A and Person E |
+
+## Domain index
+
+### engagement
+- F01 - Microsoft estate and existing business tools
+- F02 - Existing Microsoft Enterprise Agreement
+- F03 - Business familiarity and appetite for Fabric
+
+### evidence
+- No pointers classified primarily as evidence.
+
+### requirements
+- R01 - Speed to first real report
+- R02 - Managed services and low operational burden
+- R03 - Entra ID group-based role access
+- R04 - Finance-visible cost tracking from week one
+- R05 - Shared semantic layer
+- R06 - Supply Chain use case live within the current quarter
+- R07 - Parallel operation during proof
+- R08 - Nightly and hourly ingestion needs
+- A02 - Draft semantic-layer and cost-visibility requirements
+- Q02 - Need for true streaming beyond hourly
+- N04 - Requirements-drafting owner and due date
+
+### current-state
+- D03 - No-big-bang parallel modernization
+- F04 - GUI-driven ETL background
+- F08 - Nightly reporting and hourly Supply Chain need
+- F11 - Duplicated revenue logic across marts
+
+### governance
+- X05 - Entra ID group integration dependency
+
+### target-state
+- D01 - Azure cloud direction
+- D02 - ADLS Gen2 storage foundation
+- F05 - Fabric maturity and managed experience
+- F06 - Databricks flexibility and learning curve
+- F07 - PaaS and Entra ID integration
+- F09 - ADF for initial ingestion
+- F10 - Event Hubs as a later option
+- F12 - Semantic-model implications of platform choice
+- A01 - Fabric-versus-Databricks recommendation
+- X01 - Databricks learning-curve risk
+- X02 - Fabric capability-maturity risk
+- X06 - Compute-independent storage dependency
+- X07 - ADF sufficiency and deferred streaming assumption
+- Q01 - Compute platform selection
+- N02 - Final analytics compute platform remains unresolved
+
+### delivery
+- F13 - Cloud cost forecasting difference
+- A03 - Azure landing-zone scoping
+- X03 - Consumption-pricing concern
+- X04 - Capped dev/test and Milestone 1 monitoring assumption
+- X08 - Existing-mart operational dependency
+- Q03 - Finance cost model and monitoring thresholds
+- N03 - Recommendation owner and due date
