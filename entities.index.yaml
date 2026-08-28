@@ -51,13 +51,13 @@ entities:
   - id: PARENT-REQ-0004
     title: "Entra ID-integrated role-based access"
     domain: requirements
-    status: draft
+    status: validated
     path: domains/requirements/PARENT-REQ-0004.md
 
   - id: PARENT-REQ-0005
     title: "Finance-visible cloud cost tracking"
     domain: requirements
-    status: draft
+    status: validated
     path: domains/requirements/PARENT-REQ-0005.md
 
   - id: PARENT-REQ-0006
@@ -81,37 +81,37 @@ entities:
   - id: PARENT-CS-0002
     title: "Key-person dependency on three ETL pipelines"
     domain: current-state
-    status: draft
+    status: validated
     path: domains/current-state/PARENT-CS-0002.md
 
   - id: PARENT-CS-0003
     title: "ETL logic not under version control"
     domain: current-state
-    status: draft
+    status: validated
     path: domains/current-state/PARENT-CS-0003.md
 
   - id: PARENT-CS-0004
     title: "Duplicated business logic across data marts"
     domain: current-state
-    status: draft
+    status: validated
     path: domains/current-state/PARENT-CS-0004.md
 
   - id: PARENT-CS-0005
     title: "Fragile sequential nightly batch chain"
     domain: current-state
-    status: draft
+    status: validated
     path: domains/current-state/PARENT-CS-0005.md
 
   - id: PARENT-CS-0006
     title: "No data quality tooling or catalog"
     domain: current-state
-    status: draft
+    status: validated
     path: domains/current-state/PARENT-CS-0006.md
 
   - id: PARENT-CS-0007
     title: "Recurring ETL licensing and hardware maintenance cost pressure"
     domain: current-state
-    status: draft
+    status: validated
     path: domains/current-state/PARENT-CS-0007.md
 
   - id: PARENT-GOV-0001
@@ -147,7 +147,7 @@ entities:
   - id: PARENT-DEL-0004
     title: "Workstream: Fabric platform foundation"
     domain: delivery
-    status: draft
+    status: validated
     path: domains/delivery/PARENT-DEL-0004.md
 
   - id: PARENT-ADR-0001

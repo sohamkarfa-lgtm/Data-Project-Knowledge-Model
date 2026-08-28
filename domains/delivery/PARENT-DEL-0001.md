@@ -3,7 +3,7 @@ id: PARENT-DEL-0001
 domain: delivery
 type: milestone
 status: validated
-owner: platform-engineering
+owner: platform-engineer-lead
 relates_to: [PARENT-TS-0001, PARENT-REQ-0001, PARENT-REQ-0002, PARENT-REQ-0005, PARENT-REQ-0007, PARENT-ADR-0002]
 source: "Delivery Planning Session 2026-08-22"
 created: "2026-08-22"

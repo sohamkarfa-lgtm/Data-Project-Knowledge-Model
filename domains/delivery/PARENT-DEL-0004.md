@@ -3,7 +3,7 @@
  domain: delivery
  type: workstream
  status: validated
- owner: Platform Engineer Lead
+ owner: platform-engineer-lead
  relates_to: [PARENT-ADR-0002, PARENT-REQ-0001, PARENT-REQ-0004, PARENT-DEL-0001]
  source: "Parent Knowledge Model delivery planning"
  created: "2026-08-28"

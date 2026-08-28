@@ -3,7 +3,7 @@ id: PARENT-DEL-0002
 domain: delivery
 type: risk
 status: validated
-owner: platform-engineering
+owner: platform-engineer-lead
 relates_to: [PARENT-CS-0002, PARENT-DEL-0001]
 source: "Delivery Planning Session 2026-08-22"
 created: "2026-08-22"
