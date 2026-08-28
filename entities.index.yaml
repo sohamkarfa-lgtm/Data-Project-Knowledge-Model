@@ -45,7 +45,7 @@ entities:
   - id: PARENT-REQ-0003
     title: "Incremental coexistence during modernization"
     domain: requirements
-    status: draft
+    status: validated
     path: domains/requirements/PARENT-REQ-0003.md
 
   - id: PARENT-REQ-0004

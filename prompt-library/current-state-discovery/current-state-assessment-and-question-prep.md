@@ -79,12 +79,12 @@ piece is and what breaks if it fails" — so weight the questions accordingly:
 - Prioritize questions that probe **business criticality and blast radius**:
   what depends on this system, who is affected if it fails or is delayed,
   what the actual cost of an outage/delay has been historically.
-- Prioritize questions that resolve items from OPEN QUESTIONS (category 7)
+- Prioritize questions that resolve items from OPEN QUESTIONS (category 5)
   and IMPLIED PAINS (category 2) over ones that just add more
   CURRENT-STATE FACTS detail — facts without criticality context don't move
   the assessment forward as much.
 - Direct each question to the stakeholder(s) most likely to answer it, based
-  on STAKEHOLDER DYNAMICS (category 5).
+  on STAKEHOLDER DYNAMICS (category 4).
 - Where a STATED PAIN lacks enough detail to size its actual business
   impact, write a follow-up question that would get you that sizing (e.g.
   frequency, cost, who is blocked, how it's currently worked around).

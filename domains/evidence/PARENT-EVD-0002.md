@@ -20,7 +20,7 @@ Fabric platform decision captured in PARENT-ADR-0002.
   analytics compute direction.
 - Approval date: 2026-09-12
 - Approval channel: email.
-- Evidence reference: \knowledge-model-parent\sign-off\platform-decision-sign-off-email_2026-09-12.md
+- Evidence reference: \sign-off-docs\platform-decision-sign-off-email_2026-09-12.md
 - Approval wording: Proceed with Azure and Microsoft Fabric
 
 ## Implications

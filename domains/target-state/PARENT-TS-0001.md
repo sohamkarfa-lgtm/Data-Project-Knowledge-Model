@@ -26,7 +26,7 @@ foundation.
 - **Selection rationale**: Fabric better fits the team's existing skills,
   Power BI usage, capacity-based cost predictability, semantic-layer needs,
   existing Microsoft investments, and operational constraints.
-- **Initial ingestion**: Azure Data Factory for batch and hourly Supply Chain
+- **Initial ingestion**: Fabric Data Factory for batch and hourly Supply Chain
   ingestion. Event Hubs remains a later option if true streaming becomes
   necessary.
 - **Storage/Processing**: object storage + medallion architecture
@@ -39,8 +39,7 @@ foundation.
   PARENT-GOV-0001), reducing single-team/single-person dependency.
 
 Microsoft Fabric was selected as the analytics compute engine. The decision is
-recorded in PARENT-ADR-0002 and remains draft pending formal circulation and
-Person A's sign-off. The decision may be revisited if MNC's ambitions grow
+recorded in PARENT-ADR-0002. The decision may be revisited if MNC's ambitions grow
 materially toward heavy machine learning or data science workloads.
 
 ## Depends On / Enables
