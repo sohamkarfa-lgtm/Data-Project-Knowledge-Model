@@ -2,8 +2,8 @@
 id: PARENT-REQ-0003
 domain: requirements
 type: non-functional-requirement
-status: draft
-owner: "[NEEDS HUMAN INPUT: accountable owner]"
+status: validated
+owner: enterprise-architecture
 relates_to: [PARENT-CS-0001, PARENT-ENG-0001, PARENT-TS-0001]
 source: "Current State Discovery Workshop 2026-08-27"
 created: "2026-08-27"
