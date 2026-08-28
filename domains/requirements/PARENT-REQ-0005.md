@@ -2,7 +2,7 @@
 id: PARENT-REQ-0005
 domain: requirements
 type: non-functional-requirement
-status: draft
+status: validated
 owner: "[NEEDS HUMAN INPUT: accountable owner]"
 relates_to: [PARENT-DEL-0001]
 source: "Target State Architecture Discussion 2026-08-28"

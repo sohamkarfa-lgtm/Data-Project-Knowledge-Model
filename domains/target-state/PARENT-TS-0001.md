@@ -2,7 +2,7 @@
 id: PARENT-TS-0001
 domain: target-state
 type: target-architecture
-status: draft
+status: validated
 owner: enterprise-architecture
 relates_to: [PARENT-REQ-0001, PARENT-REQ-0002, PARENT-REQ-0004, PARENT-REQ-0005, PARENT-REQ-0006, PARENT-REQ-0007, PARENT-CS-0001, PARENT-ADR-0002]
 source: "Target Architecture Working Session 2026-08-20"

@@ -2,7 +2,7 @@
 id: PARENT-GOV-0001
 domain: governance
 type: operating-model
-status: draft
+status: validated
 owner: governance
 relates_to: [PARENT-ENG-0002]
 source: "Governance Alignment Session 2026-08-15"

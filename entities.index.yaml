@@ -24,6 +24,12 @@ entities:
     status: validated
     path: domains/evidence/PARENT-EVD-0001.md
 
+  - id: PARENT-EVD-0002
+    title: "Azure and Microsoft Fabric decision sign-off evidence"
+    domain: evidence
+    status: draft
+    path: domains/evidence/PARENT-EVD-0002.md
+
   - id: PARENT-REQ-0001
     title: "Independent storage/compute scaling"
     domain: requirements

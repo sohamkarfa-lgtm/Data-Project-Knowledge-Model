@@ -2,8 +2,8 @@
  id: PARENT-DEL-0004
  domain: delivery
  type: workstream
- status: draft
- owner: "Person E"
+ status: validated
+ owner: Platform Engineer Lead
  relates_to: [PARENT-ADR-0002, PARENT-REQ-0001, PARENT-REQ-0004, PARENT-DEL-0001]
  source: "Parent Knowledge Model delivery planning"
  created: "2026-08-28"
