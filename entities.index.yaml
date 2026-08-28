@@ -162,7 +162,7 @@ entities:
     status: draft
     path: adr/PARENT-ADR-0002.md
 
-child_repos: []
-  # Example once Platform Engineering repo exists:
-  # - name: knowledge-model-platform-engineering
-  #   index: ../knowledge-model-platform-engineering/entities.index.yaml
+child_repos:
+  - name: Data-Project-Platform
+    repo: https://github.com/sohamkarfa-lgtm/Data-Project-Platform
+    index: entities.index.yaml   # path relative to that repo's root
