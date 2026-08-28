@@ -37,9 +37,11 @@ versioned, linkable entities so that:
   /delivery         Workstreams, milestones, risks, assumptions, dependencies
 /schemas            Entity & frontmatter schema definitions
 /adr                Enterprise/solution-architecture-level decision records
-/meeting_summary    Meeting summaries and source notes
+/meeting_transcript Source meeting transcripts
+/meeting_summary    Structured meeting summaries and source notes
 /open-questions     Assessment outputs and questions for upcoming meetings
 /prompt-library     Reusable prompts for summaries, updates, and discovery
+/sign-off-docs       Approval and sign-off documents used as evidence
 /_pending-review    Staged content awaiting human review or approval
 entities.index.yaml Registry of every entity in this repo (and links to child repos)
 CHANGELOG.md        Human-readable log of what changed, release by release
@@ -63,13 +65,31 @@ The reusable prompts in `prompt-library/` support the current workflow:
   `[NEEDS HUMAN INPUT: ...]`.
 - `meeting-summary-to-domain-update.md` — classifies meeting content and
   proposes new or updated entities behind an explicit human approval gate.
-- `current-state-discovery/08-current-state-assessment-and-question-prep.md`
+- `decision-readiness-to-adr.md` — assesses a pending decision against model
+  evidence and requirements, compares alternatives, and prepares an
+  approval-gated ADR proposal.
+- `model-to-delivery-plan.md` — converts model entities into traceable
+  milestones, workstreams, dependencies, actions, risks, and acceptance
+  criteria behind an explicit approval gate.
+- `current-state-discovery/current-state-assessment-and-question-prep.md`
   — assesses current-state knowledge, identifies gaps, and creates an
   `open-questions/` outcome file for the next meeting.
 
-Generated summaries and question lists must preserve source attribution. Do not
-guess owners, dates, domains, statuses, or decisions; use a specific
-`[NEEDS HUMAN INPUT: ...]` marker instead.
+Generated summaries, plans, decision records, and question lists must preserve
+source attribution. Do not guess owners, dates, domains, statuses, scores, or
+decisions; use a specific `[NEEDS HUMAN INPUT: ...]` marker instead.
+
+All prompts that propose model changes are approval-gated. The normal flow is:
+
+1. Read source material and existing entities.
+2. Produce a reviewable proposal with traceable IDs and relationship links.
+3. Wait for explicit human approval.
+4. Apply only the approved changes and validate the registry, paths, links, and
+   frontmatter.
+
+Sign-off emails and other approval artifacts belong in `sign-off-docs/` and
+should be represented by an evidence entity when they support a decision or
+status change. Keep unresolved approval metadata explicit until it is verified.
 
 ## Entity ID convention
 
