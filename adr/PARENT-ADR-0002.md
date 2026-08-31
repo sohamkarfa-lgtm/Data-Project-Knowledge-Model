@@ -19,8 +19,8 @@ relationships:
     target: PARENT-REQ-0005
   - type: satisfies
     target: PARENT-REQ-0006
-source: "Platform Decision: Azure + Microsoft Fabric 2026-09-10"
-created: "2026-09-10"
+source: "Platform Decision: Azure + Microsoft Fabric 2026-08-31"
+created: "2026-08-31"
 tags: [azure, microsoft-fabric, platform-decision, analytics]
 ---
 

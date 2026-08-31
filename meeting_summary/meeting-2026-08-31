@@ -1,6 +1,6 @@
 # Meeting Summary - Platform Decision: Azure + Microsoft Fabric
 
-**Date:** 2026-09-10
+**Date:** 2026-08-31
 **Participants:** Person A (Chief Data Officer, MNC Pvt Ltd; Client Sponsor); Person B (Head of BI & Reporting, MNC Pvt Ltd); Person C (Head of IT Infrastructure, MNC Pvt Ltd); Person D (Enterprise Architect, Delivery Team); Person E (Platform Engineering Lead, Delivery Team)
 **Purpose:** Decide between Microsoft Fabric and Azure Databricks as the analytics compute engine within the previously selected Azure cloud direction, and identify dependencies and next steps for platform setup.
 
