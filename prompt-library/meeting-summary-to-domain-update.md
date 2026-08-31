@@ -59,9 +59,9 @@ STEP 2 — Draft the change for each NEW or UPDATE item.
   automatically. If the new content conflicts with what's already there,
   do not silently resolve it — present both and mark
   `[CONFLICT NEEDS HUMAN RESOLUTION]`.
-- Propose relates_to links only where you can point to a specific existing
-  entity id and a one-sentence reason. Skip this rather than force weak
-  links.
+- Propose typed `relationships` links only where you can point to a specific
+  existing entity id and a one-sentence reason. Skip this rather than force 
+  weak links.
 
 STEP 3 — Present the full proposal and STOP.
 Output everything from Step 1 and Step 2 as one reviewable packet (format

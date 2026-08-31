@@ -4,7 +4,11 @@ domain: current-state
 type: operational-process
 status: validated
 owner: enterprise-architecture
-relates_to: [PARENT-CS-0001, PARENT-DEL-0001]
+relationships:
+  - type: derived_from
+    target: PARENT-CS-0001
+  - type: depends_on
+    target: PARENT-DEL-0001
 source: "Current State Discovery Workshop 2026-08-27"
 created: "2026-08-27"
 tags: [batch, reliability, etl]

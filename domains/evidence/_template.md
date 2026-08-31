@@ -4,7 +4,7 @@ domain: evidence
 type: finding   # finding | workshop-outcome | assessment | interview-note | data-profiling-result | system-inventory
 status: draft
 owner: ""
-relates_to: []
+relationships: []
 source: ""
 created: ""
 tags: []

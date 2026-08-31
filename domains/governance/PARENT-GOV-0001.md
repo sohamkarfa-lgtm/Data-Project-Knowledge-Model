@@ -4,7 +4,9 @@ domain: governance
 type: operating-model
 status: validated
 owner: governance
-relates_to: [PARENT-ENG-0002]
+relationships:
+  - type: derived_from
+    target: PARENT-ENG-0002
 source: "Governance Alignment Session 2026-08-15"
 created: "2026-08-15"
 tags: [ownership, identity, access-control, managed-services]

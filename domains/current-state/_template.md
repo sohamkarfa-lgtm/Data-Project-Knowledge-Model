@@ -4,7 +4,7 @@ domain: current-state
 type: architecture   # architecture | data-flow | platform-tool | pain-point | technical-debt | operational-process
 status: draft
 owner: ""
-relates_to: []
+relationships: []
 source: ""
 created: ""
 tags: []

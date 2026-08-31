@@ -4,7 +4,23 @@ domain: target-state
 type: target-architecture
 status: validated
 owner: enterprise-architecture
-relates_to: [PARENT-REQ-0001, PARENT-REQ-0002, PARENT-REQ-0004, PARENT-REQ-0005, PARENT-REQ-0006, PARENT-REQ-0007, PARENT-CS-0001, PARENT-ADR-0002]
+relationships:
+  - type: satisfies
+    target: PARENT-REQ-0001
+  - type: satisfies
+    target: PARENT-REQ-0002
+  - type: satisfies
+    target: PARENT-REQ-0004
+  - type: satisfies
+    target: PARENT-REQ-0005
+  - type: satisfies
+    target: PARENT-REQ-0006
+  - type: satisfies
+    target: PARENT-REQ-0007
+  - type: derived_from
+    target: PARENT-CS-0001
+  - type: decided_by
+    target: PARENT-ADR-0002
 source: "Target Architecture Working Session 2026-08-20"
 created: "2026-08-20"
 tags: [azure, adls-gen2, adf, cloud, lakehouse]

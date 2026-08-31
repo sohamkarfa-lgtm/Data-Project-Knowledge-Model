@@ -4,7 +4,9 @@ domain: evidence
 type: interview-note
 status: validated
 owner: enterprise-architecture
-relates_to: [PARENT-ADR-0002]
+relationships:
+  - type: decided_by
+    target: PARENT-ADR-0002
 source: "Platform Decision sign-off email 2026-09-12"
 created: "2026-09-12"
 tags: [sign-off, platform-decision, azure, microsoft-fabric]

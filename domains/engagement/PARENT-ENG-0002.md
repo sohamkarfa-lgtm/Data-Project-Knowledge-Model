@@ -4,7 +4,9 @@ domain: engagement
 type: stakeholder
 status: validated
 owner: enterprise-architecture
-relates_to: [PARENT-ENG-0001]
+relationships:
+  - type: derived_from
+    target: PARENT-ENG-0001
 source: "Stakeholder Mapping Session 2026-08-06"
 created: "2026-08-06"
 tags: [raci]

@@ -100,8 +100,8 @@ For UPDATE entities, provide section-by-section current-versus-proposed text
 only for changed sections. Recommend status changes separately and never apply
 them automatically.
 
-Propose `relates_to` links only when both IDs exist and the relationship has a
-clear one-sentence justification.
+Propose typed `relationships` links only when both IDs exist and the
+relationship has a clear one-sentence justification.
 
 STEP 7 - Present the plan and STOP.
 Do not write or modify any file. Present:

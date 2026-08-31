@@ -4,7 +4,7 @@ domain: requirements
 type: business-requirement   # business-requirement | functional-requirement | non-functional-requirement | compliance-requirement | data-requirement
 status: draft
 owner: ""
-relates_to: []
+relationships: []
 source: ""
 created: ""
 tags: []

@@ -4,7 +4,13 @@ domain: requirements
 type: non-functional-requirement
 status: validated
 owner: enterprise-architecture
-relates_to: [PARENT-CS-0001, PARENT-ENG-0001, PARENT-TS-0001]
+relationships:
+  - type: derived_from
+    target: PARENT-CS-0001
+  - type: derived_from
+    target: PARENT-ENG-0001
+  - type: satisfies
+    target: PARENT-TS-0001
 source: "Current State Discovery Workshop 2026-08-27"
 created: "2026-08-27"
 tags: [migration, coexistence, business-continuity]

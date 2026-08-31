@@ -114,8 +114,14 @@ supersede with `status: superseded` and a `superseded_by` reference instead.
 
 Every engineering-discipline knowledge model repo (e.g.
 `knowledge-model-platform-engineering`) keeps its own `entities.index.yaml` and
-references parent entities via the `relates_to` field in its frontmatter, e.g.
-`relates_to: [PARENT-REQ-0003]`.
+references parent entities via the `relationships` field in its frontmatter,
+for example:
+
+```yaml
+relationships:
+  - type: satisfies
+    target: PARENT-REQ-0003
+```
 
 At MVP stage, cross-repo linking is just consistent IDs plus each repo's index
 file — no shared database needed yet. Once the number of entities grows, an

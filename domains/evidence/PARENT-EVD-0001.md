@@ -4,7 +4,9 @@ domain: evidence
 type: assessment
 status: validated
 owner: enterprise-architecture
-relates_to: [PARENT-ENG-0001]
+relationships:
+  - type: derived_from
+    target: PARENT-ENG-0001
 source: "Current Platform Assessment Workshop 2026-08-08; Current State Discovery Workshop 2026-08-27"
 created: "2026-08-08"
 tags: [on-prem, assessment]

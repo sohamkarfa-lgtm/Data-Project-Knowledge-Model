@@ -4,7 +4,11 @@ domain: delivery
 type: risk
 status: draft
 owner: "[NEEDS HUMAN INPUT: accountable owner]"
-relates_to: [PARENT-DEL-0001, PARENT-REQ-0005]
+relationships:
+  - type: depends_on
+    target: PARENT-DEL-0001
+  - type: satisfies
+    target: PARENT-REQ-0005
 source: "Target State Architecture Discussion 2026-08-28"
 created: "2026-08-28"
 tags: [cloud-cost, forecasting, finance]

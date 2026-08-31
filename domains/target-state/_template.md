@@ -4,7 +4,7 @@ domain: target-state
 type: target-architecture   # target-architecture | strategy | roadmap-item
 status: draft
 owner: ""
-relates_to: []
+relationships: []
 source: ""
 created: ""
 tags: []

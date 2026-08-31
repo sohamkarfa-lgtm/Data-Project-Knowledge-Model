@@ -4,7 +4,7 @@ domain: engagement
 type: business-objective   # business-objective | stakeholder | success-criteria | constraint | scope-item
 status: draft
 owner: ""
-relates_to: []
+relationships: []
 source: ""
 created: ""
 tags: []

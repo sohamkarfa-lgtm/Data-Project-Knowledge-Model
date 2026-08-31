@@ -4,7 +4,9 @@ domain: requirements
 type: non-functional-requirement
 status: validated
 owner: platform-engineer-lead
-relates_to: [PARENT-GOV-0001]
+relationships:
+  - type: governed_by
+    target: PARENT-GOV-0001
 source: "Target State Architecture Discussion 2026-08-28"
 created: "2026-08-28"
 tags: [identity, security, entra-id, access-control]

@@ -4,7 +4,7 @@ domain: delivery
 type: milestone   # workstream | milestone | risk | assumption | dependency | backlog-item
 status: draft
 owner: ""
-relates_to: []
+relationships: []
 source: ""
 created: ""
 tags: []

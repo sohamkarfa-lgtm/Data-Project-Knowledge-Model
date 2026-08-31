@@ -4,7 +4,15 @@
  type: workstream
  status: validated
  owner: platform-engineer-lead
- relates_to: [PARENT-ADR-0002, PARENT-REQ-0001, PARENT-REQ-0004, PARENT-DEL-0001]
+relationships:
+  - type: decided_by
+    target: PARENT-ADR-0002
+  - type: satisfies
+    target: PARENT-REQ-0001
+  - type: satisfies
+    target: PARENT-REQ-0004
+  - type: depends_on
+    target: PARENT-DEL-0001
  source: "Parent Knowledge Model delivery planning"
  created: "2026-08-28"
  tags: [fabric, landing-zone, capacity, identity]

@@ -4,7 +4,7 @@ domain: engagement
 type: business-objective
 status: validated
 owner: enterprise-architecture
-relates_to: []
+relationships: []
 source: "Kickoff Workshop 2026-08-05"
 created: "2026-08-05"
 tags: [modernization, strategic]

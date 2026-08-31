@@ -4,7 +4,9 @@ domain: requirements
 type: functional-requirement
 status: draft
 owner: "[NEEDS HUMAN INPUT: accountable owner]"
-relates_to: [PARENT-DEL-0001]
+relationships:
+  - type: depends_on
+    target: PARENT-DEL-0001
 source: "Target State Architecture Discussion 2026-08-28"
 created: "2026-08-28"
 tags: [ingestion, batch, hourly, supply-chain]

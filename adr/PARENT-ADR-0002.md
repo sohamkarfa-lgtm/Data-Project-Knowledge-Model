@@ -4,7 +4,21 @@ domain: adr
 type: decision
 status: validated
 owner: solution-architect
-relates_to: [PARENT-ADR-0001, PARENT-TS-0001, PARENT-DEL-0001, PARENT-REQ-0003, PARENT-REQ-0004, PARENT-REQ-0005, PARENT-REQ-0006]
+relationships:
+  - type: supersedes
+    target: PARENT-ADR-0001
+  - type: satisfies
+    target: PARENT-TS-0001
+  - type: depends_on
+    target: PARENT-DEL-0001
+  - type: satisfies
+    target: PARENT-REQ-0003
+  - type: satisfies
+    target: PARENT-REQ-0004
+  - type: satisfies
+    target: PARENT-REQ-0005
+  - type: satisfies
+    target: PARENT-REQ-0006
 source: "Platform Decision: Azure + Microsoft Fabric 2026-09-10"
 created: "2026-09-10"
 tags: [azure, microsoft-fabric, platform-decision, analytics]

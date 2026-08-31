@@ -34,10 +34,27 @@ owner:
   required: true
   example: enterprise-architecture
 
-relates_to:
-  description: List of other entity IDs this entity depends on, derives from, or impacts. Cross-domain and cross-repo references both use this field.
+relationships:
+  description: >
+    Typed links to other entities. Each item preserves the semantic meaning of
+    the relationship so agents can distinguish evidence, dependencies, and
+    decision links instead of collapsing everything into a generic "related to"
+    edge.
   required: false
-  example: [PARENT-EVD-0002, PARENT-ENG-0001]
+  example:
+    - type: evidenced_by
+      target: PARENT-EVD-0001
+    - type: satisfies
+      target: PARENT-REQ-0003
+  allowed_types:
+    - derived_from
+    - evidenced_by
+    - satisfies
+    - depends_on
+    - decided_by
+    - governed_by
+    - conflicts_with
+    - supersedes
 
 superseded_by:
   description: Set only when status is superseded. Points to the replacing entity ID.

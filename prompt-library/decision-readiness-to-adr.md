@@ -79,7 +79,8 @@ STEP 5 - Draft the ADR proposal.
 - Set status to `draft` always.
 - Fill every frontmatter field. Use `[NEEDS HUMAN INPUT: ...]` when a value is
   not explicitly supported.
-- Add `relates_to` links only to specific existing IDs and explain each link.
+- Add typed `relationships` links only to specific existing IDs and explain
+  each link.
 - Keep the Decision section conditional if approval is still pending.
 - Include rejected alternatives only when the evidence supports why they were
   not selected.

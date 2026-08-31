@@ -4,7 +4,13 @@ domain: adr
 type: decision
 status: validated
 owner: enterprise-architecture
-relates_to: [PARENT-ENG-0001, PARENT-EVD-0001, PARENT-REQ-0001]
+relationships:
+  - type: derived_from
+    target: PARENT-ENG-0001
+  - type: evidenced_by
+    target: PARENT-EVD-0001
+  - type: satisfies
+    target: PARENT-REQ-0001
 source: "Architecture Decision Session 2026-08-21"
 created: "2026-08-21"
 tags: [strategy]

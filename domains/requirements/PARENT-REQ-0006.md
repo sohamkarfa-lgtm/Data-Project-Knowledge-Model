@@ -4,7 +4,11 @@ domain: requirements
 type: business-requirement
 status: draft
 owner: "[NEEDS HUMAN INPUT: accountable owner]"
-relates_to: [PARENT-CS-0004, PARENT-TS-0001]
+relationships:
+  - type: derived_from
+    target: PARENT-CS-0004
+  - type: satisfies
+    target: PARENT-TS-0001
 source: "Target State Architecture Discussion 2026-08-28"
 created: "2026-08-28"
 tags: [semantic-layer, metrics, reporting]

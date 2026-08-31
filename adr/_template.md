@@ -4,7 +4,7 @@ domain: adr
 type: decision
 status: draft   # draft | validated | superseded
 owner: ""
-relates_to: []
+relationships: []
 source: ""
 created: ""
 tags: []

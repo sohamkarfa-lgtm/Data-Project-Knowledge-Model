@@ -4,7 +4,7 @@ domain: governance
 type: standard   # policy | standard | control | ownership-model | operating-model
 status: draft
 owner: ""
-relates_to: []
+relationships: []
 source: ""
 created: ""
 tags: []

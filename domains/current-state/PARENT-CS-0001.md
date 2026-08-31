@@ -4,7 +4,9 @@ domain: current-state
 type: architecture
 status: validated
 owner: enterprise-architecture
-relates_to: [PARENT-EVD-0001]
+relationships:
+  - type: evidenced_by
+    target: PARENT-EVD-0001
 source: "Current Platform Assessment Workshop 2026-08-08"
 created: "2026-08-08"
 tags: [on-prem]
