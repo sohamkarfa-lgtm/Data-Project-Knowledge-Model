@@ -3,7 +3,7 @@
 **To:** Solution-Architect
 **Cc:** Person D; Person B; Person C; Person E
 **From:** Chief Data Officer
-**Date:** 2026-09-12
+**Date:** 2026-08-30
 **Subject:** Sign-off: Azure and Microsoft Fabric Platform Decision
 
 Hello Solution-Architect,

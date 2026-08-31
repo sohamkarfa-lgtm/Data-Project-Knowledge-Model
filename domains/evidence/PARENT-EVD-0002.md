@@ -8,7 +8,7 @@ relationships:
   - type: decided_by
     target: PARENT-ADR-0002
 source: "Platform Decision sign-off email 2026-08-30"
-created: "2026-09-12"
+created: "2026-08-30"
 tags: [sign-off, platform-decision, azure, microsoft-fabric]
 ---
 
