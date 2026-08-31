@@ -7,7 +7,7 @@ owner: enterprise-architecture
 relationships:
   - type: decided_by
     target: PARENT-ADR-0002
-source: "Platform Decision sign-off email 2026-09-12"
+source: "Platform Decision sign-off email 2026-08-30"
 created: "2026-09-12"
 tags: [sign-off, platform-decision, azure, microsoft-fabric]
 ---
@@ -20,7 +20,7 @@ Fabric platform decision captured in PARENT-ADR-0002.
 - Approver: Person A, Client Sponsor, MNC Pvt Ltd.
 - Decision approved: Proceed with Azure and Microsoft Fabric as the cloud and
   analytics compute direction.
-- Approval date: 2026-09-12
+- Approval date: 2026-08-30
 - Approval channel: email.
 - Evidence reference: \sign-off-docs\platform-decision-sign-off-email_2026-09-12.md
 - Approval wording: Proceed with Azure and Microsoft Fabric
