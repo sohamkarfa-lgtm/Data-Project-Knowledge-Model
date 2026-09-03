@@ -43,6 +43,7 @@ versioned, linkable entities so that:
 /prompt-library     Reusable prompts for summaries, updates, and discovery
 /sign-off-docs       Approval and sign-off documents used as evidence
 /_pending-review    Staged content awaiting human review or approval
+AGENTS.md           Repository-level instructions for AI agent work
 entities.index.yaml Registry of every entity in this repo (and links to child repos)
 CHANGELOG.md        Human-readable log of what changed, release by release
 ```
@@ -55,6 +56,12 @@ Each domain folder contains:
 The `open-questions/` folder contains working assessment outputs and is not an
 entity domain. Its files may reference entity ids, but they are not added to
 `entities.index.yaml` unless they are later converted into domain entities.
+
+## Agent instructions
+
+AI agents working in this repository should read `AGENTS.md` before creating or
+changing model content. It captures the repo-level rules for evidence handling,
+approval gates, entity IDs, ADRs, registry updates, and validation checks.
 
 ## Prompt workflows
 
